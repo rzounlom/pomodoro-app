@@ -1,7 +1,9 @@
+import Heading from "./components/Heading";
+
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="flex flex-col items-center p-[24px]">
+      <Heading />
     </div>
   );
 }
