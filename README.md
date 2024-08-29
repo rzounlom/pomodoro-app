@@ -51,6 +51,7 @@ This is a solution to the [Pomodoro app challenge on Frontend Mentor](https://ww
 - [Vite starter guide](https://vitejs.dev/guide/) - How to setup a Vite project
 - [Tailwind css guide for Vite](https://tailwindcss.com/docs/guides/vite) - How to setup tailwind css with Vite
 - [Tailwind css theming](https://tailwindcss.com/docs/theme#customizing-the-default-theme) - How to extend default thems to add your own custom themes
+- [Classnames package](https://www.npmjs.com/package/classnames) - Docs for Classnames npm package to combine css clasnames
 - [Responsively App](https://responsively.app/download) - This app makes it easy to view multiple device layouts at once.
 - [Kumbh Sans font](https://fonts.google.com/specimen/Kumbh+Sans) - Google Font url for Kumbh Sans font
 - [Space Mono font](https://fonts.google.com/specimen/Space+Mono) - Google Font url for Space Mono font
