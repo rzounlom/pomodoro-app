@@ -1,11 +1,7 @@
-import Heading from "./components/Heading";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return (
-    <div className="flex flex-col items-center p-[24px]">
-      <Heading />
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;
