@@ -1,17 +1,20 @@
+import { ColorType, SessionType } from "../types";
 import { FC, useState } from "react";
 
 import Heading from "../components/Heading";
 import Session from "../components/session/Session";
+import Timer from "../components/timer/Timer";
 
 const HomePage: FC = () => {
-  const [session, setSession] = useState<"pomodoro" | "short" | "long">(
-    "short"
-  );
+  const [session, setSession] = useState<SessionType>("short");
+
+  const [color, setColor] = useState<ColorType>("red");
 
   return (
-    <div className="flex flex-col items-center p-[24px]">
+    <div className="flex flex-col items-center justify-evenly h-screen p-[24px]">
       <Heading />
-      <Session session={session} color="aqua" setSession={setSession} />
+      <Session session={session} color={color} setSession={setSession} />
+      <Timer />
     </div>
   );
 };

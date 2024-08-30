@@ -2,7 +2,7 @@ import { SessionProps } from "./Session";
 import classNames from "classnames";
 
 export const sessionContainer = classNames(
-  "flex justify-around items-center mt-12 w-[327px] md:w-[373px] h-[63px] rounded-[31.5px] bg-deep-navy md:text-[14px] p-2 text-pale-blue font-bold"
+  "flex justify-around items-center w-[327px] md:w-[373px] h-[63px] rounded-[31.5px] bg-deep-navy md:text-[14px] p-2 text-pale-blue font-bold"
 );
 
 export const sessionPill = ({ color, active }: SessionProps) => {

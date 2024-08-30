@@ -20,6 +20,8 @@ export default {
         "pure-white": "#FFFFFF",
         "soft-white": "#EFF1FA",
         "deep-navy": "#161932",
+        "night-purple": "#2E325A",
+        "midnight-purple": "#0E112A",
       },
     },
   },

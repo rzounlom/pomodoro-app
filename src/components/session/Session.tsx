@@ -1,13 +1,14 @@
+import { ColorType, SessionType } from "../../types";
 import { sessionContainer, sessionPill } from "./styles";
 
 import { FC } from "react";
 import { sessions } from "./data";
 
 export interface SessionProps {
-  session: "pomodoro" | "short" | "long";
-  color: "red" | "aqua" | "lavender";
+  session: SessionType;
+  color: ColorType;
   active?: boolean;
-  setSession?: (session: "pomodoro" | "short" | "long") => void;
+  setSession?: (session: SessionType) => void;
 }
 
 const Session: FC<SessionProps> = ({ session, color, setSession }) => {
@@ -26,10 +27,10 @@ const Session: FC<SessionProps> = ({ session, color, setSession }) => {
           key={name}
           className={sessionPill({
             color,
-            session: name as "pomodoro" | "short" | "long",
+            session,
             active: session === name,
           })}
-          onClick={() => handleClick(name as "pomodoro" | "short" | "long")}
+          onClick={() => handleClick(name as SessionType)}
         >
           {label}
         </div>
