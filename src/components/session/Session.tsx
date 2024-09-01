@@ -14,7 +14,7 @@ export interface SessionProps {
 const Session: FC<SessionProps> = ({ session, color, setSession }) => {
   console.log({ session, color });
 
-  const handleClick = (s: "pomodoro" | "short" | "long") => {
+  const handleClick = (s: "pomodoro" | "shortBreak" | "longBreak") => {
     if (setSession) {
       setSession(s);
     }

@@ -2,15 +2,24 @@ import "react-circular-progressbar/dist/styles.css";
 import "./Timer.css";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-// export default Timer;
+import { ColorType, SessionType, SettingsType } from "../../types";
 import { FC, useEffect, useState } from "react";
 import { timerBtn, timerContainer, timerInner, timerOuter } from "./styles";
 
+interface TimerProps {
+  color: ColorType;
+  session: SessionType;
+  settings: SettingsType;
+}
+
 // Pomodoro Timer Component
-const Timer = () => {
-  const [secondsLeft, setSecondsLeft] = useState(60 * 25); // 25 minutes in seconds
+const Timer: FC<TimerProps> = ({ color, session, settings }) => {
+  const initialTime = settings[session] * 60; // Convert to seconds
+  const [secondsLeft, setSecondsLeft] = useState(initialTime);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [persistedTime, setPersistedTime] = useState(initialTime);
+  const [pathColor, setPathColor] = useState("#F87070");
 
   // Calculate minutes and seconds for display
   const minutes = Math.floor(secondsLeft / 60);
@@ -27,15 +36,37 @@ const Timer = () => {
   };
 
   // Reset functionality
-  const handleReset = () => {
-    setIsActive(false);
-    setIsPaused(false);
-    setSecondsLeft(60 * 25);
-  };
+  // const handleReset = () => {
+  //   setIsActive(false);
+  //   setIsPaused(false);
+  //   setSecondsLeft(persistedTime);
+  // };
+
+  // Whenever the session changes, update the time state
+  useEffect(() => {
+    const initialSessionTime = settings[session] * 60; // Convert to seconds
+    setSecondsLeft(initialSessionTime);
+    setPersistedTime(initialSessionTime);
+  }, [session, settings]);
+
+  useEffect(() => {
+    const handlePathColor = () => {
+      switch (color) {
+        case "aqua":
+          return "#70F3F8";
+        case "lavender":
+          return "#D881F8";
+        default:
+          return "#F87070";
+      }
+    };
+
+    setPathColor(handlePathColor());
+  }, [color]);
 
   // Timer countdown logic
   useEffect(() => {
-    let timer: number;
+    let timer: number | undefined;
     if (isActive && !isPaused && secondsLeft > 0) {
       timer = setInterval(() => {
         setSecondsLeft((secondsLeft) => secondsLeft - 1);
@@ -47,19 +78,19 @@ const Timer = () => {
   }, [isActive, isPaused, secondsLeft]);
 
   // Calculate percentage for circular progress bar
-  const percentage = (secondsLeft / (25 * 60)) * 100;
+  const percentage = (secondsLeft / persistedTime) * 100;
 
   return (
     <div className={timerContainer}>
       <div className={timerOuter}>
         <CircularProgressbar
           value={percentage}
-          strokeWidth={3.5}
+          strokeWidth={3.2}
           styles={buildStyles({
             strokeLinecap: "round",
             textSize: "16px",
             pathTransitionDuration: 0.5,
-            pathColor: "#F87070",
+            pathColor: pathColor,
             trailColor: "transparent",
             backgroundColor: "#1E213F",
           })}

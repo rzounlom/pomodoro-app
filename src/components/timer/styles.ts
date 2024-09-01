@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 export const timerContainer = classNames(
-  "flex justify-center w-full h-3/5 lg:w-2/4"
+  "flex justify-center w-full h-2/4 lg:w-2/4"
 );
 
 export const timerOuter = classNames(
