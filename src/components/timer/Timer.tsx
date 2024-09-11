@@ -2,18 +2,14 @@ import "react-circular-progressbar/dist/styles.css";
 import "./Timer.css";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import { ColorType, SessionType, SettingsType } from "../../types";
 import { FC, useEffect, useState } from "react";
 import { timerBtn, timerContainer, timerInner, timerOuter } from "./styles";
 
-interface TimerProps {
-  color: ColorType;
-  session: SessionType;
-  settings: SettingsType;
-}
+import { useAppContext } from "../../hooks/useAppContext";
 
 // Pomodoro Timer Component
-const Timer: FC<TimerProps> = ({ color, session, settings }) => {
+const Timer: FC = () => {
+  const { color, session, settings } = useAppContext();
   const initialTime = settings[session] * 60; // Convert to seconds
   const [secondsLeft, setSecondsLeft] = useState(initialTime);
   const [isActive, setIsActive] = useState(false);

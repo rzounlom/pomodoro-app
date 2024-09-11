@@ -1,18 +1,12 @@
-import { ColorType, SessionType } from "../../types";
 import { sessionContainer, sessionPill } from "./styles";
 
 import { FC } from "react";
+import { SessionType } from "../../types";
 import { sessions } from "./data";
+import { useAppContext } from "../../hooks/useAppContext";
 
-export interface SessionProps {
-  session: SessionType;
-  color: ColorType;
-  active?: boolean;
-  setSession?: (session: SessionType) => void;
-}
-
-const Session: FC<SessionProps> = ({ session, color, setSession }) => {
-  console.log({ session, color });
+const Session: FC = () => {
+  const { session, setSession, color } = useAppContext();
 
   const handleClick = (s: "pomodoro" | "shortBreak" | "longBreak") => {
     if (setSession) {

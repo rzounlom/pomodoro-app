@@ -1,27 +1,13 @@
-import { ColorType, FontType, SettingsType } from "../../types";
 import { FC, useState } from "react";
 
 import SettingsModal from "./SettingsModal";
 import { settingsContainer } from "./styles";
 import settingsIcon from "../../assets/icon-settings.svg";
+import { useAppContext } from "../../hooks/useAppContext";
 
-interface SettingsProps {
-  settings: SettingsType;
-  setSettings: (settings: SettingsType) => void;
-  setColor: (color: ColorType) => void;
-  setFontType: (fontType: FontType) => void;
-  color: ColorType;
-  fontType: FontType;
-}
-
-const Settings: FC<SettingsProps> = ({
-  settings,
-  setSettings,
-  setColor,
-  setFontType,
-  color,
-  fontType,
-}) => {
+const Settings: FC = () => {
+  const { settings, setSettings, setColor, setFontType, color, fontType } =
+    useAppContext();
   const [open, setOpen] = useState(false);
   return (
     <div className={settingsContainer}>

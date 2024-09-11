@@ -3,6 +3,8 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { FC, useState } from "react";
 import { arrowDown, arrowUp, closeIcon } from "../../assets";
 
+import { useAppContext } from "../../hooks/useAppContext";
+
 interface SettingsModalProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -14,15 +16,8 @@ interface SettingsModalProps {
   color: ColorType;
 }
 
-const SettingsModal: FC<SettingsModalProps> = ({
-  open,
-  setOpen,
-  settings,
-  setSettings,
-  setColor,
-  //   color,
-  //   fontType,
-}) => {
+const SettingsModal: FC<SettingsModalProps> = ({ open, setOpen }) => {
+  const { settings, setSettings, setColor, color, fontType } = useAppContext();
   const [defaultSettings, setDefaultSettings] = useState(settings);
   const [defaultColor, setDefaultColor] = useState<ColorType>("red");
 
@@ -49,10 +44,8 @@ const SettingsModal: FC<SettingsModalProps> = ({
   };
 
   const handleApplySettings = () => {
-    console.log("settings before apply", { settings, defaultSettings });
     setSettings(defaultSettings);
     setColor(defaultColor);
-    console.log("settings after apply", { settings, defaultSettings });
     setOpen(false);
   };
   return (
