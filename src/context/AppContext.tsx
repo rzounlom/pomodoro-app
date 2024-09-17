@@ -8,8 +8,8 @@ interface AppContextType {
   setSession: (session: SessionType) => void;
   color: ColorType;
   setColor: (color: ColorType) => void;
-  fontType: FontType;
-  setFontType: (fontType: FontType) => void;
+  font: FontType;
+  setFont: (fontType: FontType) => void;
   settings: SettingsType;
   setSettings: (settings: SettingsType) => void;
 }
@@ -21,7 +21,7 @@ export const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [session, setSession] = useState<SessionType>("pomodoro");
   const [color, setColor] = useState<ColorType>("red");
-  const [fontType, setFontType] = useState<FontType>("ks");
+  const [font, setFont] = useState<FontType>("ks");
   const [settings, setSettings] = useState<SettingsType>({
     pomodoro: 25,
     shortBreak: 5,
@@ -35,8 +35,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setSession,
         color,
         setColor,
-        fontType,
-        setFontType,
+        font,
+        setFont,
         settings,
         setSettings,
       }}

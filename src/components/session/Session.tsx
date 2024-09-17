@@ -21,7 +21,6 @@ const Session: FC = () => {
           key={name}
           className={sessionPill({
             color,
-            session,
             active: session === name,
           })}
           onClick={() => handleClick(name as SessionType)}
