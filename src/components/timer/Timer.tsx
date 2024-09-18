@@ -9,7 +9,7 @@ import { useAppContext } from "../../hooks/useAppContext";
 
 // Pomodoro Timer Component
 const Timer: FC = () => {
-  const { color, session, settings } = useAppContext();
+  const { color, session, settings, font } = useAppContext();
   const initialTime = settings[session] * 60; // Convert to seconds
   const [secondsLeft, setSecondsLeft] = useState(initialTime);
   const [isActive, setIsActive] = useState(false);
@@ -21,8 +21,20 @@ const Timer: FC = () => {
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;
 
+  // Reset functionality
+  const handleReset = () => {
+    setIsActive(false);
+    setIsPaused(false);
+    setSecondsLeft(persistedTime);
+  };
+
   // Start and pause functionality
   const handleStartPause = () => {
+    if (secondsLeft === 0) {
+      handleReset();
+      return;
+    }
+
     if (isPaused) {
       setIsPaused(false);
       setIsActive(true);
@@ -30,13 +42,6 @@ const Timer: FC = () => {
       setIsActive(!isActive);
     }
   };
-
-  // Reset functionality
-  // const handleReset = () => {
-  //   setIsActive(false);
-  //   setIsPaused(false);
-  //   setSecondsLeft(persistedTime);
-  // };
 
   // Whenever the session changes, update the time state
   useEffect(() => {
@@ -76,6 +81,16 @@ const Timer: FC = () => {
   // Calculate percentage for circular progress bar
   const percentage = (secondsLeft / persistedTime) * 100;
 
+  const timerBtnText = () => {
+    if (secondsLeft === 0) {
+      return "RESTART";
+    } else if (isActive) {
+      return "PAUSE";
+    } else {
+      return "START";
+    }
+  };
+
   return (
     <div className={timerContainer}>
       <div className={timerOuter}>
@@ -91,12 +106,12 @@ const Timer: FC = () => {
             backgroundColor: "#1E213F",
           })}
         />
-        <div className={timerInner}>
+        <div className={timerInner({ font })}>
           {`${minutes.toString().padStart(2, "0")}:${seconds
             .toString()
             .padStart(2, "0")}`}
           <button onClick={handleStartPause} className={timerBtn}>
-            {isActive ? "PAUSE" : "START"}
+            {timerBtnText()}
           </button>
         </div>
       </div>

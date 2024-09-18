@@ -13,7 +13,8 @@ interface SettingsModalProps {
 }
 
 const SettingsModal: FC<SettingsModalProps> = ({ open, setOpen }) => {
-  const { settings, setSettings, setColor, color, font } = useAppContext();
+  const { settings, setSettings, setColor, color, font, setFont } =
+    useAppContext();
   const [defaultSettings, setDefaultSettings] = useState(settings);
   const [defaultColor, setDefaultColor] = useState<ColorType>(color);
   const [defaultFont, setDefaultFont] = useState<FontType>(font);
@@ -45,6 +46,7 @@ const SettingsModal: FC<SettingsModalProps> = ({ open, setOpen }) => {
   const handleApplySettings = () => {
     setSettings(defaultSettings);
     setColor(defaultColor);
+    setFont(defaultFont);
     setOpen(false);
   };
 

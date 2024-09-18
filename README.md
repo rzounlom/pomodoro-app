@@ -23,8 +23,8 @@ This is a solution to the [Pomodoro app challenge on Frontend Mentor](https://ww
 
 ### Links
 
-- Solution URL: (https://www.frontendmentor.io/solutions/htmlcss-recipe-page-gqw1J9UenB)
-- Live Site URL: (https://recipe-page-eight-sigma.vercel.app/)
+- Solution URL: (https://www.frontendmentor.io/solutions/vite-tailwind-css-pomodoro-app-KeD3XwipxG)
+- Live Site URL: (https://pomodoro-app-seven-azure.vercel.app/)
 - Gituhb Repo URL: (https://github.com/rzounlom/pomodoro-app)
 
 ## My process
