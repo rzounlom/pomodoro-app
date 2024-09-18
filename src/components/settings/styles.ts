@@ -10,8 +10,9 @@ export const settingsModalContainer = classNames(
 
 export const settingsModalFont = ({ isActive }: { isActive: boolean }) =>
   classNames(
-    "h-[40px] w-[40px] flex justify-center items-center rounded-full bg-soft-white border font-space-mono font-bold",
+    "h-[40px] w-[40px] flex justify-center items-center rounded-full border font-space-mono font-bold",
     {
+      "bg-soft-white": !isActive,
       "bg-midnight-blue text-white": isActive,
     }
   );
