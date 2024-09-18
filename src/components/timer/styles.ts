@@ -9,9 +9,9 @@ export const timerOuter = classNames(
 );
 
 export const timerInner = classNames(
-  "absolute inset-0 flex flex-col justify-center items-center text-[80px] md:text-[100px] font-bold tracking-[-4px] md:tracking-[-5px]"
+  "absolute inset-0  flex flex-col justify-center items-center text-[80px] md:text-[100px] font-bold tracking-[-4px] md:tracking-[-5px]"
 );
 
 export const timerBtn = classNames(
-  "text-[14px] md:text-[16px] tracking-[13.125px] md:tracking-[15px]"
+  "text-[14px] md:text-[16px] tracking-[13.125px] md:tracking-[15px] ml-[18px]"
 );

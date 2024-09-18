@@ -9,7 +9,9 @@ const Settings: FC = () => {
   return (
     <div className={settingsContainer}>
       <SettingsModal open={open} setOpen={setOpen} />
-      <img onClick={() => setOpen(true)} src={settingsIcon} />
+      <div className="w-[28px] h-[28px] mr-[10px] md:mr-[10px]">
+        <img onClick={() => setOpen(true)} src={settingsIcon} />
+      </div>
     </div>
   );
 };
